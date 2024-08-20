@@ -31,6 +31,20 @@ class Ball extends Figure {
             this.dy *= -1;
         }
     }
+
+    checkCollision(figure) {
+        if (figure instanceof Paddle) {
+            const [x, y] = [this.location.x, this.location.y];
+            const nearestX = Math.max(figure.getX(), Math.min(x, figure.getX() + figure.pWidth));
+            const nearestY = Math.max(figure.getY(), Math.min(y, figure.getY() + figure.pHeight));
+
+            const deltaX = x - nearestX;
+            const deltaY = y - nearestY;
+
+            return (deltaX * deltaX + deltaY * deltaY) < (this.radius * this.radius);
+        }
+        return false;
+    }
 }
 
 

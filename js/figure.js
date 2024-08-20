@@ -24,4 +24,16 @@ class Figure {
 
     }
 
+    checkCollision(figure) {
+
+    }
+
+    getX() {
+        return this.location.x;
+    }
+
+    getY() {
+        return this.location.y;
+    }
+
 }

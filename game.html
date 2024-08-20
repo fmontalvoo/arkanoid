@@ -54,6 +54,10 @@
 
             paddle.display(context);
 
+            if (ball.checkCollision(paddle)) {
+                ball.dy *= -1;
+            }
+
             window.requestAnimationFrame(draw);
 
         }
