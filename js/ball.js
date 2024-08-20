@@ -1,6 +1,6 @@
 class Ball extends Figure {
     constructor(x, y, r) {
-        super(x, y, 1);
+        super(x, y, 2);
         this.radius = r;
         this.diameter = r / 2;
     }

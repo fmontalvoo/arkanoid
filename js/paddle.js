@@ -1,6 +1,6 @@
 class Paddle extends Figure {
     constructor(x, y, pWidth, pHeight) {
-        super(x, y, 5);
+        super(x, y, 10);
         this.pWidth = pWidth;
         this.pHeight = pHeight;
     }
@@ -13,5 +13,14 @@ class Paddle extends Figure {
             this.pWidth,
             this.pHeight
         );
+    }
+
+    move(delta) {
+        if (delta > 0 && this.getX() < this.canvasWidth - this.pWidth) {
+            this.location.x += this.velocity;
+        }
+        else if (delta < 0 && this.getX() > 0) {
+            this.location.x -= this.velocity;
+        }
     }
 }

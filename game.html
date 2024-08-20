@@ -58,11 +58,44 @@
                 ball.dy *= -1;
             }
 
-            window.requestAnimationFrame(draw);
+            if (ball.getY() > paddle.getY() + 2 * ball.radius) {
+                document.location.reload();
+            }
 
+            window.requestAnimationFrame(draw);
         }
 
+        function initEvents() {
+            const keyDownHandler = (event) => {
+                const { key } = event;
+                switch (key) {
+                    case 'ArrowLeft':
+                        paddle.move(-1);
+                        break;
+                    case 'ArrowRight':
+                        paddle.move(1);
+                        break;
+                }
+            }
+            const keyUpHandler = (event) => {
+                const { key } = event;
+                switch (key) {
+                    case 'ArrowLeft':
+                        paddle.move(0);
+                        break;
+                    case 'ArrowRight':
+                        paddle.move(0);
+                        break;
+                }
+            }
+
+            document.addEventListener('keyup', keyUpHandler);
+            document.addEventListener('keydown', keyDownHandler);
+        }
+
+
         draw();
+        initEvents();
     </script>
 
 </body>
