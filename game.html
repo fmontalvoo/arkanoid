@@ -24,7 +24,9 @@
 <body>
     <canvas></canvas>
     <script src="./js/vector.js"></script>
+    <script src="./js/figure.js"></script>
     <script src="./js/ball.js"></script>
+    <script src="./js/paddle.js"></script>
 
     <script>
         const canvas = document.querySelector('canvas');
@@ -36,6 +38,10 @@
         const ball = new Ball(canvas.width / 2, canvas.height - 25, 4);
         ball.setCanvasDimensions(canvas.width, canvas.height);
 
+        const [pWidth, pHeight] = [50, 10];
+        const paddle = new Paddle((canvas.width - pWidth) / 2, canvas.height - 2 * pHeight, pWidth, pHeight);
+        paddle.setCanvasDimensions(canvas.width, canvas.height)
+
         function clean() {
             context.clearRect(0, 0, canvas.width, canvas.height);
         }
@@ -45,7 +51,8 @@
 
             ball.display(context);
             ball.update();
-            ball.edges();
+
+            paddle.display(context);
 
             window.requestAnimationFrame(draw);
 

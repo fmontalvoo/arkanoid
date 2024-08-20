@@ -1,28 +1,23 @@
-class Ball {
+class Ball extends Figure {
     constructor(x, y, r) {
+        super(x, y, 1);
         this.radius = r;
         this.diameter = r / 2;
-
-        this.velocity = 1;
-        this.location = new Vector(x, y);
-
-        this.canvasWidth = 0; // ancho del canvas
-        this.canvasHeight = 0; // alto del canvas
-
-        this.dy = this.velocity;
-        this.dx = this.velocity * (Math.random() < 0.5 ? -1 : 1);
     }
-    setCanvasDimensions(width, height) {
-        this.canvasWidth = width;
-        this.canvasHeight = height;
-    }
+
     display(context) {
         context.beginPath();
-        context.arc(this.location.x, this.location.y, this.radius, 0, 2 * Math.PI);
+        context.arc(
+            this.location.x,
+            this.location.y,
+            this.radius, 0,
+            2 * Math.PI
+        );
         context.fillStyle = '#fff';
         context.fill();
         context.closePath();
     }
+
     update() {
         this.location.add(this.dx, this.dy);
 
@@ -35,9 +30,7 @@ class Ball {
             || this.location.y > this.canvasHeight - this.diameter) {
             this.dy *= -1;
         }
-
     }
-    edges() { }
 }
 
 
