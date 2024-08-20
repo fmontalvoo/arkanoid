@@ -40,7 +40,7 @@
 
         const [pWidth, pHeight] = [50, 10];
         const paddle = new Paddle((canvas.width - pWidth) / 2, canvas.height - 2 * pHeight, pWidth, pHeight);
-        paddle.setCanvasDimensions(canvas.width, canvas.height)
+        paddle.setCanvasDimensions(canvas.width, canvas.height);
 
         function clean() {
             context.clearRect(0, 0, canvas.width, canvas.height);
