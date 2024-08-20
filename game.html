@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+    body {
+        background-color: #111;
+    }
+
+    canvas {
+        margin: 0 auto;
+        display: block;
+        background: #000;
+        border: 4px solid #fff;
+        /* border-bottom: transparent; */
+    }
+</style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arkanoid</title>
+</head>
+
+<body>
+    <canvas></canvas>
+    <script src="./js/vector.js"></script>
+    <script src="./js/ball.js"></script>
+
+    <script>
+        const canvas = document.querySelector('canvas');
+        const context = canvas.getContext('2d');
+
+        canvas.width = 448;
+        canvas.height = 400;
+
+        const ball = new Ball(canvas.width / 2, canvas.height - 25, 4);
+        ball.setCanvasDimensions(canvas.width, canvas.height);
+
+        function clean() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function draw() {
+            clean();
+
+            ball.display(context);
+            ball.update();
+            ball.edges();
+
+            window.requestAnimationFrame(draw);
+
+        }
+
+        draw();
+    </script>
+
+</body>
+
+</html>
