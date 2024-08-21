@@ -1,5 +1,5 @@
 # ARKANOID.JS
 
 <p align="center">
-    <img src="https://github.com/user-attachments/assets/8cef9e4a-c157-4db7-b153-34146dece538" />
+    <img src="https://github.com/user-attachments/assets/8949e71c-8c5b-4ec4-8b2b-d8bdfa30941a" />
 </p>
