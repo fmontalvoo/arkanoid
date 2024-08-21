@@ -45,8 +45,3 @@ class Ball extends Figure {
         return false;
     }
 }
-
-
-
-
-

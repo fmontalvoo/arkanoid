@@ -35,5 +35,4 @@ class Figure {
     getY() {
         return this.location.y;
     }
-
 }

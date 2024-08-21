@@ -34,5 +34,4 @@ class Brick extends Figure {
         }
         return false;
     }
-
 }
