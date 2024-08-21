@@ -1,6 +1,8 @@
 class Paddle extends Figure {
+    
     constructor(x, y, pWidth, pHeight) {
-        super(x, y, 10);
+        super(x, y);
+        this.velocity = 10;
         this.pWidth = pWidth;
         this.pHeight = pHeight;
         this.$sprite = document.querySelector('#sprite');
@@ -22,10 +24,10 @@ class Paddle extends Figure {
 
     move(delta) {
         if (delta > 0 && this.getX() < this.canvasWidth - this.pWidth) {
-            this.location.add(this.velocity, 0);
+            this.applyForce(this.velocity, 0);
         }
         else if (delta < 0 && this.getX() > 0) {
-            this.location.add(-this.velocity, 0);
+            this.applyForce(-this.velocity, 0);
         }
     }
 }

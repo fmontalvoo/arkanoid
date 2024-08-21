@@ -1,6 +1,7 @@
 class Brick extends Figure {
+    
     constructor(x, y, bWidth, bHeight, active, asset) {
-        super(x, y, 0);
+        super(x, y);
         this.bWidth = bWidth;
         this.bHeight = bHeight;
         this.active = active;

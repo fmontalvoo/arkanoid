@@ -1,4 +1,5 @@
 class Bricks {
+    
     constructor(bRowCount, bColumnCount, bWidth, bHeight, bOffsetTop, bOffsetLeft, bPadding) {
         this.bRowCount = bRowCount;
         this.bColumnCount = bColumnCount;

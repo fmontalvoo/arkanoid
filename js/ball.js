@@ -1,8 +1,13 @@
 class Ball extends Figure {
+
     constructor(x, y, r) {
-        super(x, y, 2);
+        super(x, y);
         this.radius = r;
         this.diameter = r / 2;
+
+        this.velocity = 2;
+        this.dy = this.velocity;
+        this.dx = this.velocity * (Math.random() < 0.5 ? -1 : 1);
     }
 
     display(context) {
@@ -10,7 +15,8 @@ class Ball extends Figure {
         context.arc(
             this.getX(),
             this.getY(),
-            this.radius, 0,
+            this.radius, 
+            0,
             2 * Math.PI
         );
         context.fillStyle = '#fff';
@@ -19,7 +25,7 @@ class Ball extends Figure {
     }
 
     update() {
-        this.location.add(this.dx, this.dy);
+        this.applyForce(this.dx, this.dy);
 
         if (this.getX() < this.diameter
             || this.getX() > this.canvasWidth - this.diameter) {
@@ -32,10 +38,10 @@ class Ball extends Figure {
         }
     }
 
-    checkCollision(figure) {
-        if (figure instanceof Paddle) {
-            const nearestX = Math.max(figure.getX(), Math.min(this.getX(), figure.getX() + figure.pWidth));
-            const nearestY = Math.max(figure.getY(), Math.min(this.getY(), figure.getY() + figure.pHeight));
+    checkCollision(paddle) {
+        if (paddle instanceof Paddle) {
+            const nearestX = Math.max(paddle.getX(), Math.min(this.getX(), paddle.getX() + paddle.pWidth));
+            const nearestY = Math.max(paddle.getY(), Math.min(this.getY(), paddle.getY() + paddle.pHeight));
 
             const deltaX = this.getX() - nearestX;
             const deltaY = this.getY() - nearestY;

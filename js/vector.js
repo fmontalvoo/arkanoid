@@ -3,29 +3,17 @@ function Vector(x, y) {
     this.y = y;
 }
 
-Vector.prototype.add = function (...args) {
-    if (args.length === 1 && args[0] instanceof Vector) {
-        this.x += args[0].x;
-        this.y += args[0].y;
-    }
-    else if (args.length === 2 && typeof args[0] === 'number' && typeof args[1] === 'number') {
-        this.x += args[0];
-        this.y += args[1];
-    } else {
-        throw new Error('Invalid arguments: provide a Vector or two numbers.');
+Vector.prototype.add = function (v) {
+    if (v instanceof Vector) {
+        this.x += v.x;
+        this.y += v.y;
     }
 }
 
-Vector.prototype.sub = function (...args) {
-    if (args.length === 1 && args[0] instanceof Vector) {
-        this.x -= args[0].x;
-        this.y -= args[0].y;
-    }
-    else if (args.length === 2 && typeof args[0] === 'number' && typeof args[1] === 'number') {
-        this.x -= args[0];
-        this.y -= args[1];
-    } else {
-        throw new Error('Invalid arguments: provide a Vector or two numbers.');
+Vector.prototype.sub = function (v) {
+    if (v instanceof Vector) {
+        this.x -= v.x;
+        this.y -= v.y;
     }
 }
 

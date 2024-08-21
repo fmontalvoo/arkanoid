@@ -1,7 +1,7 @@
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
-canvas.width = 448;
+canvas.width = 450;
 canvas.height = 400;
 
 const ball = new Ball(canvas.width / 2, canvas.height - 25, 4);
@@ -11,7 +11,7 @@ const [pWidth, pHeight] = [50, 10];
 const paddle = new Paddle((canvas.width - pWidth) / 2, canvas.height - 2 * pHeight, pWidth, pHeight);
 paddle.setCanvasDimensions(canvas.width, canvas.height);
 
-const bricks = new Bricks(5, 13, 32, 16, 20, 16, 0);
+const bricks = new Bricks(5, 13, 32, 16, 20, 18, 0);
 
 function clean() {
     context.clearRect(0, 0, canvas.width, canvas.height);
@@ -23,6 +23,8 @@ let msFPSPrev = window.performance.now() + 1000;
 const msPerFrame = 1000 / fps;
 let frames = 0;
 let framesPerSec = fps;
+
+const godMode = false;
 
 function draw() {
     window.requestAnimationFrame(draw);
@@ -58,7 +60,7 @@ function paint() {
         ball.dy *= -1;
     }
 
-    if (ball.getY() > paddle.getY() + 2 * ball.radius) {
+    if (!godMode && ball.getY() > paddle.getY() + 2 * ball.radius) {
         document.location.reload();
     }
 
