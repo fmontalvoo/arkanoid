@@ -8,8 +8,8 @@ class Ball extends Figure {
     display(context) {
         context.beginPath();
         context.arc(
-            this.location.x,
-            this.location.y,
+            this.getX(),
+            this.getY(),
             this.radius, 0,
             2 * Math.PI
         );
@@ -21,13 +21,13 @@ class Ball extends Figure {
     update() {
         this.location.add(this.dx, this.dy);
 
-        if (this.location.x < this.diameter
-            || this.location.x > this.canvasWidth - this.diameter) {
+        if (this.getX() < this.diameter
+            || this.getX() > this.canvasWidth - this.diameter) {
             this.dx *= -1;
         }
 
-        if (this.location.y < this.diameter
-            || this.location.y > this.canvasHeight - this.diameter) {
+        if (this.getY() < this.diameter
+            || this.getY() > this.canvasHeight - this.diameter) {
             this.dy *= -1;
         }
     }

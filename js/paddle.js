@@ -3,13 +3,18 @@ class Paddle extends Figure {
         super(x, y, 10);
         this.pWidth = pWidth;
         this.pHeight = pHeight;
+        this.$sprite = document.querySelector('#sprite');
     }
 
     display(context) {
-        context.fillStyle = '#09f';
-        context.fillRect(
-            this.location.x,
-            this.location.y,
+        context.drawImage(
+            this.$sprite,
+            29,
+            174,
+            this.pWidth,
+            this.pHeight,
+            this.getX(),
+            this.getY(),
             this.pWidth,
             this.pHeight
         );
