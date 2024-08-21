@@ -22,10 +22,10 @@ class Paddle extends Figure {
 
     move(delta) {
         if (delta > 0 && this.getX() < this.canvasWidth - this.pWidth) {
-            this.location.x += this.velocity;
+            this.location.add(this.velocity, 0);
         }
         else if (delta < 0 && this.getX() > 0) {
-            this.location.x -= this.velocity;
+            this.location.add(-this.velocity, 0);
         }
     }
 }
