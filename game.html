@@ -213,7 +213,32 @@
             document.addEventListener('keydown', keyDownHandler);
         }
 
+        const fps = 60;
+        let msPrev = window.performance.now();
+        let msFPSPrev = window.performance.now() + 1000;
+        const msPerFrame = 1000 / fps;
+        let frames = 0;
+        let framesPerSec = fps;
+
         function draw() {
+            window.requestAnimationFrame(draw);
+
+            const msNow = window.performance.now();
+            const msPassed = msNow - msPrev;
+
+            if (msPassed < msPerFrame) return;
+
+            const excessTime = msPassed % msPerFrame
+            msPrev = msNow - excessTime
+
+            frames++
+
+            if (msFPSPrev < msNow) {
+                msFPSPrev = window.performance.now() + 1000
+                framesPerSec = frames;
+                frames = 0;
+            }
+
             clean();
             // Dibujar elementos
             drawBall();
@@ -224,7 +249,9 @@
             collisionDetection();
             ballMovement();
             paddleMovement();
-            window.requestAnimationFrame(draw);
+
+            context.fillStyle = '#fff';
+            context.fillText(`FPS: ${framesPerSec}`, 5, 10);
         }
 
         draw();
