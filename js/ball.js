@@ -3,7 +3,6 @@ class Ball extends Figure {
     constructor(x, y, r) {
         super(x, y);
         this.radius = r;
-        this.diameter = r / 2;
 
         this.velocity = 2;
         this.dy = this.velocity;
@@ -15,7 +14,7 @@ class Ball extends Figure {
         context.arc(
             this.getX(),
             this.getY(),
-            this.radius, 
+            this.radius,
             0,
             2 * Math.PI
         );
@@ -27,13 +26,13 @@ class Ball extends Figure {
     update() {
         this.applyForce(this.dx, this.dy);
 
-        if (this.getX() < this.diameter
-            || this.getX() > this.canvasWidth - this.diameter) {
+        if (this.getX() < this.radius
+            || this.getX() > this.canvasWidth - this.radius) {
             this.dx *= -1;
         }
 
-        if (this.getY() < this.diameter
-            || this.getY() > this.canvasHeight - this.diameter) {
+        if (this.getY() < this.radius
+            || this.getY() > this.canvasHeight - this.radius) {
             this.dy *= -1;
         }
     }
