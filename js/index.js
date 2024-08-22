@@ -85,13 +85,8 @@ function initEvents() {
     }
     const keyUpHandler = (event) => {
         const { key } = event;
-        switch (key) {
-            case 'ArrowLeft':
-                paddle.move(0);
-                break;
-            case 'ArrowRight':
-                paddle.move(0);
-                break;
+        if (key == 'ArrowLeft' || key == 'ArrowRight') {
+            paddle.move(0);
         }
     }
 
