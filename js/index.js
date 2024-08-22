@@ -74,18 +74,16 @@ function paint() {
 function initEvents() {
     const keyDownHandler = (event) => {
         const { key } = event;
-        switch (key) {
-            case 'ArrowLeft':
-                paddle.move(-1);
-                break;
-            case 'ArrowRight':
-                paddle.move(1);
-                break;
+        if(key === 'ArrowLeft'){
+            paddle.move(-1);
         }
+        else if(key === 'ArrowRight'){
+            paddle.move(1);
+        } 
     }
     const keyUpHandler = (event) => {
         const { key } = event;
-        if (key == 'ArrowLeft' || key == 'ArrowRight') {
+        if (key === 'ArrowLeft' || key === 'ArrowRight') {
             paddle.move(0);
         }
     }
