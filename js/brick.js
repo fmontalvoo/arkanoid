@@ -1,6 +1,9 @@
-class Brick extends Figure {
-    
-    constructor(x, y, bWidth, bHeight, active, asset) {
+import { Ball } from './ball.js';
+import { Figure } from './figure.js';
+
+export class Brick extends Figure {
+
+    constructor(x = 0, y = 0, bWidth, bHeight, active, asset) {
         super(x, y);
         this.bWidth = bWidth;
         this.bHeight = bHeight;

@@ -1,4 +1,7 @@
-class Bricks {
+import { Ball } from './ball.js';
+import { Brick } from './brick.js';
+
+export class Bricks {
     
     constructor(bRowCount, bColumnCount, bWidth, bHeight, bOffsetTop, bOffsetLeft, bPadding) {
         this.bRowCount = bRowCount;

@@ -1,12 +1,15 @@
-class Ball extends Figure {
+import { Figure } from './figure.js';
+import { Paddle } from './paddle.js';
 
-    constructor(x, y, r) {
+export class Ball extends Figure {
+
+    constructor(x = 0, y = 0, r = 1) {
         super(x, y);
         this.radius = r;
 
-        this.velocity = 2;
-        this.dy = this.velocity;
-        this.dx = this.velocity * (Math.random() < 0.5 ? -1 : 1);
+        this._velocity = 2;
+        this.dy = this._velocity;
+        this.dx = this._velocity * (Math.random() < 0.5 ? -1 : 1);
     }
 
     display(context) {
@@ -25,7 +28,9 @@ class Ball extends Figure {
 
     update() {
         this.applyForce(this.dx, this.dy);
+    }
 
+    edges() {
         if (this.getX() < this.radius
             || this.getX() > this.canvasWidth - this.radius) {
             this.dx *= -1;

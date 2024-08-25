@@ -1,3 +1,8 @@
+import { Ball } from './ball.js';
+import { Bricks } from './bricks.js';
+import { Paddle } from './paddle.js';
+
+
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 
@@ -34,13 +39,13 @@ function draw() {
 
     if (msPassed < msPerFrame) return;
 
-    const excessTime = msPassed % msPerFrame
-    msPrev = msNow - excessTime
+    const excessTime = msPassed % msPerFrame;
+    msPrev = msNow - excessTime;
 
-    frames++
+    frames++;
 
     if (msFPSPrev < msNow) {
-        msFPSPrev = window.performance.now() + 1000
+        msFPSPrev = window.performance.now() + 1000;
         framesPerSec = frames;
         frames = 0;
     }
@@ -53,6 +58,7 @@ function paint() {
 
     ball.display(context);
     ball.update();
+    ball.edges();
 
     paddle.display(context);
 

@@ -1,6 +1,8 @@
-class Figure {
+import { Vector } from './vector.js';
 
-    constructor(x, y) {
+export class Figure {
+
+    constructor(x = 0, y = 0) {
         this.location = new Vector(x, y);
 
         this.canvasWidth = 0; // ancho del canvas
